@@ -17,6 +17,17 @@ Random.init()
 first = Random.pick_element(adj_list)
 second = Random.pick_element(adj_list)
 animal = Random.pick_element(ani_list)
-combo = first <> second <> animal
 
-IO.puts combo
+uncapd = [first, second, animal]
+
+defmodule Capper do
+  def caplist([head | tail]) do
+    [String.capitalize(head) | caplist(tail)]
+  end
+
+  def caplist([]) do
+    []
+  end
+end
+
+uncapd |> Capper.caplist |>  IO.puts
